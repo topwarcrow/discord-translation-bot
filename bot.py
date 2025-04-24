@@ -1,3 +1,5 @@
+import threading
+import socket
 import os  # ← すでにあるはずだけど念のため
 
 PORT = int(os.environ.get("PORT", 10000))  # ← ここを追加
