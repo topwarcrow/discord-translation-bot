@@ -1,3 +1,17 @@
+import os  # ← すでにあるはずだけど念のため
+
+PORT = int(os.environ.get("PORT", 10000))  # ← ここを追加
+
+def dummy_server():
+    s = socket.socket()
+    s.bind(('', PORT))  # ← 固定値10000からPORT変数に変更
+    s.listen(1)
+    while True:
+        conn, addr = s.accept()
+        conn.close()
+
+threading.Thread(target=dummy_server, daemon=True).start()
+
 import discord
 from discord.ext import commands
 from googletrans import Translator
